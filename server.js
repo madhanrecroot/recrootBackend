@@ -8,6 +8,7 @@ const bcrypt = require("bcrypt");
 const passport = require("passport");
 // const flash = require("express-flash");
 const session = require("express-session");
+const MongoStore = require('connect-mongo');
 const methodOverride = require("method-override");
 // const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
@@ -106,6 +107,9 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+     store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URL,
+    })
   })
 );
 app.use(passport.initialize());
