@@ -75,7 +75,7 @@ module.exports = (app) => {
   router.get("/getOneCover/:id",userController.get_singleCover);
  
 
-
+router.get('/return/:id', (req, res) => res.send('Hello World!'))
 
   router.post(
     "/addCover/:id",
